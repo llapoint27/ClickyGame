@@ -5,11 +5,13 @@ import './CardManager.css';
 import _ from 'lodash';
 
 export class CardManager extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            currentCardState:defaultFriendsArray,
-            lastCardhosen:null,
+
+            currentCardState: defaultFriendsArray,
+            lastCardchosen: null,
         };
 
         this.cardClickHandler = this.cardClickHandler.bind(this);
@@ -17,17 +19,20 @@ export class CardManager extends Component {
 
     cardClickHandler(id){
 
+        //pull the id from the picture
         console.log(id)
-        const {currentCardState, lastCardhosen} = this.state;
-        console.log('Hi I work');
+        //destructuring 
+        const {currentCardState, lastCardchosen} = this.state;
+        console.log('Hi I work'); //testing click function
 
-        if (lastCardhosen) {
-            if(lastCardhosen === id) {
+        if (lastCardchosen) {
+            if(lastCardchosen === id) {
                 //they lost
              console.log("you lose");
             }
             else {
                 //then won
+                //call the shuffle function and render
                 this.shuffleAllCards();
             }
         }
@@ -35,10 +40,11 @@ export class CardManager extends Component {
         //if not set it
         //if so compare and give feedback
         //then rearrange array and re-render
-        const shuffledArray = this.shuffleAllCards(currentCardState);
-        this.setState({currentCardState:shuffledArray});
-    }
 
+        const shuffledArray = this.shuffleAllCards(currentCardState);
+        this.setState({ currentCardState: shuffledArray });
+    }
+    //shuffle function from lodash to return shuffled array
     shuffleAllCards(arr) {
         return _.shuffle(arr);
     }
@@ -47,7 +53,7 @@ export class CardManager extends Component {
         const {currentCardState} = this.state;
 
         return (
-            <div className="card-container">{currentCardState.map((friend, i) => <Card key={i} cardClickHandler={this.cardClickHandler}  configData={friend} />)}</div>
+            <div className="flex-container">{currentCardState.map((friend, i) => <Card key={i} cardClickHandler={this.cardClickHandler}  configData={friend} />)}</div>
         )
     }
 }
