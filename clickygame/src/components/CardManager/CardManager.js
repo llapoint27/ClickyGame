@@ -12,6 +12,10 @@ export class CardManager extends Component {
 
             currentCardState: defaultFriendsArray,
             lastCardchosen: null,
+            //add scores
+            score: 0,
+            topScore: 0
+
         };
 
         this.cardClickHandler = this.cardClickHandler.bind(this);

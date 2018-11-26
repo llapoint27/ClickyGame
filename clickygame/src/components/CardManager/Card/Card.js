@@ -6,8 +6,7 @@ export const Card = props => {
     //Styling this would each individual card
     return (
         <div onClick={() => cardClickHandler(id)}>
-           <img data-id={id} src={image} alt="some character" />
-           <p>{id}</p>
+           <img data-id={id} src={image} alt="hey arnold character" />
             </div>
     )
 }
